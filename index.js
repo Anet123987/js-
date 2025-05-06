@@ -270,3 +270,46 @@
   
 //   countdown(5).then((message) => console.log(message));
   
+// Уявімо, що ти готуєш сніданок. Потрібно:
+// Підсмажити яйця (2 секунди)
+// Зварити каву (3 секунди)
+// Підсмажити тости (1.5 секунди)
+// Кожна дія — це асинхронна функція, яка повертає проміс. Завдання:
+// Використовуючи Promise.all, виведи повідомлення "Сніданок готовий!" лише після завершення всіх трьох дій, якщо вони виконані успішно.
+// Одна з дій (зварити каву) може завершитися помилкою, якщо кави немає (змінна hasCoffee = false). В такому випадку проміс має
+// вивести повідомлення про помилку "❌ Сніданок не вийшов"
+function fryEgg() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(" Egg ready");
+      }, 2000);
+    });
+  }
+  
+  function makeCoffy() {
+    const kof = Math.random() > 0.5;
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (kof) {
+          resolve(" Coffee ready");
+        } else {
+          reject(" Coffee not ready");
+        }
+      }, 3000);
+    });
+  }
+  
+  function fryToast() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve("Toast ready");
+      }, 1500);
+    });
+  }
+  
+  Promise.all([fryEgg(), makeCoffy(), fryToast()])
+    .then((data) => {
+      console.log("Breakfast ready:");
+      console.log(data.join(", "));
+    })
+    .catch((error) => console.log("Error:", error));
