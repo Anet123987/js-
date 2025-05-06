@@ -202,3 +202,24 @@ function checkValue(value) {
 checkValue(value)
   .then(result => console.log("Result:", result))
   .catch(error => console.error("Error:", error))
+// Створи функцію randomTask(), яка повертає проміс. З ймовірністю 50% вона виконується з рядком "Успіх!", інакше — відхиляється з "Помилка!".
+// * Проміс має повертати не рядок, а обʼєкт з властивостями code (відсоток) і message (сам текст)
+// Приклади відповіді:
+// ✅ 73% - Успіх!
+// ❌ 7% - Помилка!
+const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const random = Math.random() * 100;
+      if (random >= 50) {
+        resolve(`✅ ${random.toFixed(2)} - Успіх!`);
+      } else {
+        reject(`❌ ${random.toFixed(2)} - Помилка!`);
+      }
+    }, 1000);
+  });
+  
+  p1.then(result => {
+    console.log(result);
+  }).catch(error => {
+    console.log(error);
+  });
