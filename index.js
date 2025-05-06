@@ -162,64 +162,111 @@
     //         reject("come for money");
     //     }
     //   });
-    // })
-    //   p1.then(onFull=>{
-    //     console.log("nyam")
-    //   })
-    //   .catch(onRej=>{
-    //     console.log("money")
-    //   })
-    // const promise= new Promise((resolve,reject)=>{
-    //     resolve(10);})
-    // promise.then(()=>{})
-    // .then(()=>{})
-    // .then(()=>{})
-    // .catch(()=>{})
+//     // })
+//     //   p1.then(onFull=>{
+//     //     console.log("nyam")
+//     //   })
+//     //   .catch(onRej=>{
+//     //     console.log("money")
+//     //   })
+//     // const promise= new Promise((resolve,reject)=>{
+//     //     resolve(10);})
+//     // promise.then(()=>{})
+//     // .then(()=>{})
+//     // .then(()=>{})
+//     // .catch(()=>{})
     
-// Promise.reject()
-// Promise.resolve()
-// // Promise.all-чекає всі,якщо не має помилок.результат масив всіх промісів,або першу помилку
-// Promise.allSettled повертає масив зі статусом виконання,і виконані і не виконані
-// Promise.rase повертає перший проміс,незалежно від виконання
-const value = +prompt("Give a value");
+// // Promise.reject()
+// // Promise.resolve()
+// // // Promise.all-чекає всі,якщо не має помилок.результат масив всіх промісів,або першу помилку
+// // Promise.allSettled повертає масив зі статусом виконання,і виконані і не виконані
+// // Promise.rase повертає перший проміс,незалежно від виконання
+// const value = +prompt("Give a value");
 
-function checkValue(value) {
-  return new Promise((res, rej) => {
-    if (Number.isNaN(value)) {
-      rej("Error: Not a number");
-    } else if (value % 2 === 0) {
-      setTimeout(() => {
-        res("even");
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        res("odd");
-      }, 2000);
-    }
-  });
-}
+// function checkValue(value) {
+//   return new Promise((res, rej) => {
+//     if (Number.isNaN(value)) {
+//       rej("Error: Not a number");
+//     } else if (value % 2 === 0) {
+//       setTimeout(() => {
+//         res("even");
+//       }, 1000);
+//     } else {
+//       setTimeout(() => {
+//         res("odd");
+//       }, 2000);
+//     }
+//   });
+// }
 
-checkValue(value)
-  .then(result => console.log("Result:", result))
-  .catch(error => console.error("Error:", error))
-// Створи функцію randomTask(), яка повертає проміс. З ймовірністю 50% вона виконується з рядком "Успіх!", інакше — відхиляється з "Помилка!".
-// * Проміс має повертати не рядок, а обʼєкт з властивостями code (відсоток) і message (сам текст)
-// Приклади відповіді:
-// ✅ 73% - Успіх!
-// ❌ 7% - Помилка!
-const p1 = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const random = Math.random() * 100;
-      if (random >= 50) {
-        resolve(`✅ ${random.toFixed(2)} - Успіх!`);
-      } else {
-        reject(`❌ ${random.toFixed(2)} - Помилка!`);
-      }
-    }, 1000);
-  });
+// checkValue(value)
+//   .then(result => console.log("Result:", result))
+//   .catch(error => console.error("Error:", error))
+// // Створи функцію randomTask(), яка повертає проміс. З ймовірністю 50% вона виконується з рядком "Успіх!", інакше — відхиляється з "Помилка!".
+// // * Проміс має повертати не рядок, а обʼєкт з властивостями code (відсоток) і message (сам текст)
+// // Приклади відповіді:
+// // ✅ 73% - Успіх!
+// // ❌ 7% - Помилка!
+// const p1 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const random = Math.random() * 100;
+//       if (random >= 50) {
+//         resolve(`✅ ${random.toFixed(2)} - Успіх!`);
+//       } else {
+//         reject(`❌ ${random.toFixed(2)} - Помилка!`);
+//       }
+//     }, 1000);
+//   });
   
-  p1.then(result => {
-    console.log(result);
-  }).catch(error => {
-    console.log(error);
-  });
+//   p1.then(result => {
+//     console.log(result);
+//   }).catch(error => {
+//     console.log(error);
+//   });
+// //   не в ифе 
+//   let random; 
+
+// const p1 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     random = Math.random() * 100;
+//     if (random >= 50) {
+//       resolve(true);
+//     } else {
+//       reject(false);
+//     }
+//   }, 1000);
+// });
+
+// p1.then(() => {
+//   console.log(`✅ ${random.toFixed(2)} - Успіх!`);
+// }).catch(() => {
+//   console.log(`❌ ${random.toFixed(2)} - Помилка!`);
+// });
+// // Створіть функцію countdown(seconds), яка приймає кількість секунд і повертає проміс.
+// // Проміс виконується після того, як пройде зазначений час. Функція має виводити у консоль кожну секунду до завершення.
+// // countdown(5).then(res => console.log(res));
+// // 4...
+// // 3...
+// // 2...
+// // 1...
+// // Час вийшов!
+// function countdown(seconds) {
+//     let i = seconds;
+  
+//     const intervalId = setInterval(() => {
+//       console.log(`${i}...`);
+//       i -= 1;
+//       if (i < 0) {
+//         clearInterval(intervalId);
+//       }
+//     }, 1000); 
+  
+//     return new Promise((resolve) => {
+//       setTimeout(() => {
+//         resolve(" time out!");
+//       }, seconds * 1000);
+//     });
+//   }
+  
+//   countdown(5).then((message) => console.log(message));
+  
